@@ -8,7 +8,7 @@ const slides = [
   {
     id: 1,
     title: "Summer Sale Collection",
-    description: "Sale Up To 50% Off On Summer Sale Collection",
+    description: "Sale Up To 50% Off",
     img: "https://images.pexels.com/photos/3620411/pexels-photo-3620411.jpeg?auto=compress&cs=tinysrgb&w=600",
     url: "/",
     bg: "bg-gradient-to-r from-yellow-50 to-pink-50",
@@ -16,7 +16,7 @@ const slides = [
   {
     id: 2,
     title: "Winter Sale Collection",
-    description: "Sale Up To 50% Off On Winter Sale Collection",
+    description: "Sale Up To 50% Off",
     img: "https://images.pexels.com/photos/157675/fashion-men-s-individuality-black-and-white-157675.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     url: "/",
     bg: "bg-gradient-to-r from-yellow-50 to-pink-50",
@@ -24,7 +24,7 @@ const slides = [
   {
     id: 3,
     title: "Spring Sale Collection",
-    description: "Sale Up To 50% Off On Spring Sale Collection",
+    description: "Sale Up To 50% Off",
     img: "https://images.pexels.com/photos/20663750/pexels-photo-20663750/free-photo-of-woman-in-pink-suit.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     url: "/",
     bg: "bg-gradient-to-r from-yellow-50 to-pink-50",
