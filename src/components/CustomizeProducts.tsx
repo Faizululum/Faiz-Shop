@@ -1,7 +1,8 @@
 "use client";
 
 import { products } from "@wix/stores";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Add from "./Add";
 
 const CustomizeProducts = ({
   productId,
@@ -15,6 +16,19 @@ const CustomizeProducts = ({
   const [selectedOptions, setSelectedOptions] = useState<{
     [key: string]: string;
   }>({});
+
+  const [selectedVariant, setSelectedVariant] = useState<products.Variant>();
+
+  useEffect(() => {
+    const variant = variants.find((v) => {
+      const variantChoices = v.choices;
+      if (!variantChoices) return false;
+      return Object.entries(selectedOptions).every(
+        ([key, value]) => variantChoices[key] === value
+      );
+    });
+    setSelectedVariant(variant);
+  }, [selectedOptions, variants]);
 
   const handleOptionSelect = (optionType: string, choice: string) => {
     setSelectedOptions((prev) => ({ ...prev, [optionType]: choice }));
@@ -75,12 +89,16 @@ const CustomizeProducts = ({
               ) : (
                 <li
                   className="ring-1 ring-red text-red rounded-md py-1 px-4 text-sm"
-                  style={{ 
+                  style={{
                     cursor: disabled ? "not-allowed" : "pointer",
-                    backgroundColor: selected ? "#f35c7a" : disabled ? "#fbcfe8" : "white",
+                    backgroundColor: selected
+                      ? "#f35c7a"
+                      : disabled
+                      ? "#fbcfe8"
+                      : "white",
                     color: selected || disabled ? "white" : "#f35c7a",
-                    boxShadow: disabled ? "none" : ""
-                   }}
+                    boxShadow: disabled ? "none" : "",
+                  }}
                   onClick={clickHandler}
                 >
                   {choice.description}
@@ -90,6 +108,13 @@ const CustomizeProducts = ({
           </ul>
         </div>
       ))}
+      <Add
+        productId={productId}
+        variantId={
+          selectedVariant?._id || "00000000-0000-0000-0000-000000000000"
+        }
+        stockNumber={selectedVariant?.stock?.quantity || 0}
+      />
       {/* COLOR */}
       {/* 
           <ul className="flex items-center gap-3">
